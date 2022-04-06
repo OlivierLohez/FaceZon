@@ -16,8 +16,10 @@ class BaseController extends AbstractController
     #[Route('/accueil', name: 'accueil')]
     public function index(): Response
     {
+        $repoArticle = $this->getDoctrine()->getRepository(Article::class);
+        $article = $repoArticle->findAll();
         return $this->render('base/accueil.html.twig', [
-            'controller_name' => 'BaseController',
+            'article' => $article
         ]);
     }
 

@@ -17,5 +17,20 @@
     <a href="https://github.com/OlivierLohez/FaceZon">
     <i class="bi bi-arrow-bar-up"></i>
     </a>
+    <table class="table table-hover">
+						<thead>
+							<tr class="fw-bold text-primary">
+                                <th scope="col">Titre</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for article in article %}
+								<tr class="{{ cycle(['table-primary', 'table-secondary'], loop.index0) }}">
+									<td>{{ article.titre | sort((a, b) => a.quantity <=> b.quantity)|column('titre') }}</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+	</tbody>
 </div>
 {% endblock %}
